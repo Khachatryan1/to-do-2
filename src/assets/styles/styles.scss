@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin button {
+  color: aliceblue;
+  background-color: #68b8ea;
+  border-radius: 5px;
+  height: 35px;
+  border: none;
+  font-size: 18px;
+  word-spacing: 4px;
+  letter-spacing: 3px;
+}
+
+@mixin button-hover {
+  color: black;
+  background-color: #8f8989;
+  cursor: pointer;
+}
+
+.to-do {
+  width: 700px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px 40px;
+
+  .todoInput {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #8f8989;
+    border-radius: 5px;
+    padding: 20px;
+
+    .task-input {
+      height: 35px;
+      padding: 10px 15px;
+      font-size: 18px;
+      border: 1px solid #8f8989;
+      outline: none;
+      border-radius: 5px;
+    }
+
+    .add-button {
+      @include button;
+    }
+
+    .add-button:hover {
+      @include button-hover;
+    }
+  }
+
+  .to-do-list {
+    display: flex;
+    flex-direction: column;
+
+    .to-do-list-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+
+      .to-do-list-buttons-all, 
+      .to-do-list-buttons-done, 
+      .to-do-list-buttons-todo {
+        @include button;
+        width: calc(100% / 3 - 30px);
+      }
+
+      .to-do-list-buttons-all:hover, 
+      .to-do-list-buttons-done:hover, 
+      .to-do-list-buttons-todo:hover {
+        @include button-hover;
+      }
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .task {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        border: 1px solid #8f8989;
+        padding: 15px;
+      }
+
+      .task-list-buttons {
+        display: flex;
+        gap: 8px;
+
+        .checkbox {
+          width: 25px;
+          height: 25px;
+          background: rgb(195, 208, 195);
+          border: 1px solid #000;
+        }
+
+        .checkbox-checked {
+          @extend .checkbox; 
+        
+          background-color: rgb(11, 185, 8);
+          border-color: rgb(11, 185, 8);
+        }
+
+        .edit {
+          color: #e8ef09;
+        }
+
+        .trash {
+          color: red;
+        }
+      }
+    }
+
+    .telete-tasks {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .delete-done-tasks, 
+    .delete-all-tasks {
+      @include button;
+      background-color: red;
+      width: calc(100% / 2 - 15px);
+    }
+
+    .delete-done-tasks:hover, 
+    .delete-all-tasks:hover {
+      @include button-hover;
+    }
+
+     
+  }
+}
